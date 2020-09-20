@@ -4,7 +4,7 @@ A Static Typechecker for Elixir
 
 ## Warning
 
-Currently this software is vaporware, this archive is only the
+Currently this software is vaporware, at the moment this repo is only the
 outermost shell and performs no actual typechecking.  Considerable
 work will be going into [mavis](https://github.com/ityonemo/mavis) before
 further work happens here.
