@@ -18,6 +18,10 @@ A Static Typechecker for Elixir
 
 - PLT Caching.  This will probably be necessary in future iterations.
 
+## Default Type Checker
+
+- defaults to the elixir type system as defined by [mavis](https://github.com/ityonemo/mavis)
+
 ## Basic example
 
 ```elixir
