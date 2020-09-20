@@ -17,6 +17,17 @@ defmodule Selectrix do
             (float(), float()) :: float()
           called with (a :: any(), "fail" :: <<_::32, _::_*8>>)
           """
+      AddWarn ->
+        IO.warn(
+          """
+          input types a :: integer() | atom(), 3 :: 3 may fail with function `Kernel.+/2` with spec
+            (integer(), integer()) :: integer()
+            (float(), float()) :: float()
+            (integer(), float()) :: float()
+            (float(), float()) :: float()
+          """,
+          Macro.Env.stacktrace(
+            %{env | line: 4, function: {:add, 1}}))
       _ -> :ok
     end
   end

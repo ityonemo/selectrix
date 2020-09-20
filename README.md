@@ -2,6 +2,11 @@
 
 A Static Typechecker for Elixir
 
+## Warning
+
+Currently this software is vaporware, this archive is only the
+outermost shell and performs no actual typechecking.
+
 ## Features
 
 - a custom type-system for the beam that is not based on any theoretical typesystems, but is based on experience with the BEAM.
@@ -22,7 +27,7 @@ A Static Typechecker for Elixir
 
 - defaults to the elixir type system as defined by [mavis](https://github.com/ityonemo/mavis)
 
-## Basic example
+## Basic examples
 
 ```elixir
 defmodule AddFail do
@@ -45,6 +50,29 @@ function Kernel.+/2 with spec
   (integer(), float()) :: float()
   (float(), float()) :: float()
 called with (a :: any(), "fail" :: <<_::32, _::_*8>>)
+```
+
+```elixir
+defmodule AddWarn do
+  @spec add(integer | :atom) :: integer
+  def add(a) do
+    a + 3
+  end
+
+  @after_compile Selectrix.TypeCheck
+end
+```
+
+causes the compiler warning:
+
+```text
+warning: input types a :: integer() | atom(), 3 :: 3 may fail with function `Kernel.+/2` with spec
+  (integer(), integer()) :: integer()
+  (float(), float()) :: float()
+  (integer(), float()) :: float()
+  (float(), float()) :: float()
+
+  nofile:4: AddWarn.add/1
 ```
 
 ## Future Installation
