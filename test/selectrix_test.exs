@@ -1,27 +1,28 @@
 defmodule SelectrixTest do
   use ExUnit.Case, async: true
 
-  @failing_code """
-  defmodule AddFail do
-    def add(a) do
-      a + "fail"
-    end
+  # make sure it syncs with the expectations defined in the README.md
 
-    @after_compile Selectrix.TypeCheck
-  end
-  """
+  readme_content = __DIR__
+  |> Path.join("../README.md")
+  |> File.read!
+  |> String.split("```")
+
+  failing_code = readme_content
+  |> Enum.reject(&(&1 =~ "deps"))
+  |> Enum.find(&String.starts_with?(&1, "elixir"))
+  |> String.trim("elixir\n")
+
+  @failing_code failing_code
+
+  error_msg = readme_content
+  |> Enum.find(&String.starts_with?(&1, "text"))
+  |> String.trim("text\n")
+
+  @error_msg error_msg
 
   test "compiler causes fail" do
-    msg = """
-    function Kernel.+/2 with spec
-      (integer(), integer()) :: integer()
-      (float(), float()) :: float()
-      (integer(), float()) :: float()
-      (float(), float()) :: float()
-    got (any, <<::32+_*8>>)
-    """
-
-    assert_raise Selectrix.TypeError, msg, fn ->
+    assert_raise CompileError, @error_msg, fn ->
       Code.compile_string(@failing_code)
     end
   end

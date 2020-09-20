@@ -1,6 +1,22 @@
 # Selectrix
 
-**Static Typechecker for Elixir**
+A Static Typechecker for Elixir
+
+## Features
+
+- a custom type-system for the beam that is not based on any theoretical typesystems, but is based on experience with the BEAM.
+
+- not a DSL in the elixir language (no macros in the checked code)
+
+- Hooks into the elixir compiler tracer, and has a way of invocation that works even if it should require a tracer message that doesn’t exist yet.
+
+- Pluggable
+
+## Current non-features
+
+- Performance.  Expect the first iteration to cause your compilation times to increase.
+
+- PLT Caching.  This will probably be necessary in future iterations.
 
 ## Basic example
 
@@ -16,13 +32,14 @@ end
 
 causes the compiler error:
 
-<pre><code style="color:red">function Kernel.+/2 with spec
+```text
+nofile:7: (type error) function Kernel.+/2 with spec
   (integer(), integer()) :: integer()
   (float(), float()) :: float()
   (integer(), float()) :: float()
   (float(), float()) :: float()
 got (any, <<::32+_*8>>)
-</code></pre>
+```
 
 ## Future Installation
 
