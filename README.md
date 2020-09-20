@@ -14,7 +14,15 @@ defmodule AddFail do
 end
 ```
 
-causes a compiler error:
+causes the compiler error:
+
+<pre><code style="color:red">function Kernel.+/2 with spec
+  (integer(), integer()) :: integer()
+  (float(), float()) :: float()
+  (integer(), float()) :: float()
+  (float(), float()) :: float()
+got (any, <<::32+_*8>>)
+</code></pre>
 
 ## Future Installation
 
