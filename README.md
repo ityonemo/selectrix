@@ -5,13 +5,26 @@ A Static Typechecker for Elixir
 ## Warning
 
 Currently this software is vaporware, this archive is only the
-outermost shell and performs no actual typechecking.
+outermost shell and performs no actual typechecking.  Considerable
+work will be going into [mavis](https://github.com/ityonemo/mavis) before
+further work happens here.
+
+## Funding
+
+@Dusty on Elixirforums suggested that I take GitHub sponsorship, so that
+has been set up.  I feel like this funding structure vaguely
+disincentivizes "get this POC out"-type projects on a timetable, and
+is more suited for projects that need long-term maintenance.  But it's
+the simplest thing I could do.  Accordingly, the sponsorships will
+be terminated before the end of November.  If you'd prefer a different
+way of leaving me a tip, message me on elixirforums (my gh handle) or
+the Elixir Slack (my gh handle).
 
 ## Features
 
 - a custom type-system for the beam that is not based on any theoretical typesystems, but is based on experience with the BEAM.
 
-- not a DSL in the elixir language (no macros in the checked code)
+- not a DSL in the elixir language (no nonstandard macros in the checked code)
 
 - Hooks into the elixir compiler tracer, and has a way of invocation that works even if it should require a tracer message that doesn’t exist yet.
 
