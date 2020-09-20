@@ -44,7 +44,7 @@ function Kernel.+/2 with spec
   (float(), float()) :: float()
   (integer(), float()) :: float()
   (float(), float()) :: float()
-called with (a :: any(), "fail" :: <<::32+_*8>>)
+called with (a :: any(), "fail" :: <<_::32, _::_*8>>)
 ```
 
 ## Future Installation
