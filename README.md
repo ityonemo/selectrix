@@ -37,12 +37,14 @@ end
 causes the compiler error:
 
 ```text
-nofile:7: (type error) function Kernel.+/2 with spec
+nofile:3: (type error)
+
+function Kernel.+/2 with spec
   (integer(), integer()) :: integer()
   (float(), float()) :: float()
   (integer(), float()) :: float()
   (float(), float()) :: float()
-got (any, <<::32+_*8>>)
+called with (a :: any(), "fail" :: <<::32+_*8>>)
 ```
 
 ## Future Installation

@@ -5,15 +5,17 @@ defmodule Selectrix do
     case env.module do
       AddFail ->
         raise CompileError,
-          line: 7,
+          line: 3,
           file: env.file,
           description: """
-          (type error) function Kernel.+/2 with spec
+          (type error)
+
+          function Kernel.+/2 with spec
             (integer(), integer()) :: integer()
             (float(), float()) :: float()
             (integer(), float()) :: float()
             (float(), float()) :: float()
-          got (any, <<::32+_*8>>)
+          called with (a :: any(), "fail" :: <<::32+_*8>>)
           """
       _ -> :ok
     end
