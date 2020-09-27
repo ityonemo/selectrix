@@ -2,6 +2,8 @@
 
 A Static Typechecker for Elixir
 
+While this is under construction, you can check for updates in the issues tracker above ^^
+
 ## Warning
 
 Currently this software is vaporware, at the moment this repo is only the
