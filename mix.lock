@@ -1,0 +1,4 @@
+%{
+  "mavis": {:hex, :mavis, "0.0.1", "d81f5e8a61abc989dcbb3152382b39395da9c90adcc5648b81f56bff424b66b8", [:mix], [], "hexpm", "1f9261e5093290eef8ee15e26c08433e080be07fd9d5acd20a7c3e8d898bece9"},
+  "mavis_inference": {:git, "https://github.com/ityonemo/mavis_inference", "827d5a1d9a6cb0cefebe8f277c7e56b333ec7c36", [branch: "main"]},
+}

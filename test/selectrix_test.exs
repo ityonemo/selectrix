@@ -39,5 +39,4 @@ defmodule SelectrixTest do
       Code.compile_string(@warning_code)
     end) =~ @warn_msg
   end
-
 end

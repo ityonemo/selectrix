@@ -1,6 +1,6 @@
 defmodule Selectrix do
 
-  def trace({:after_compile, _binary}, env) do
+  def trace({:after_compile, binary}, env) do
     # just a dumb shim, for now.  Will be much more sophisticated later =D
     case env.module do
       AddFail ->
@@ -28,9 +28,28 @@ defmodule Selectrix do
           """,
           Macro.Env.stacktrace(
             %{env | line: 4, function: {:add, 1}}))
-      _ -> :ok
+      _module ->
+        trace_module(binary, env)
     end
   end
 
   def trace(_, _), do: :ok
+
+  @info_funs ~w(__info__ module_info)a
+
+  def trace_module(binary, env) do
+    {:beam_file, _, _, _, _, funs} = :beam_disasm.file(binary)
+
+    funs
+    |> Stream.reject(fn {:function, name, _, _, _} -> name in @info_funs end)
+    |> Stream.map(&Type.Inference.infer/1)
+    |> Enum.each(fn
+      :ok -> :ok
+      {:maybe, reasons} ->
+        Selectrix.Message.warn(reasons, env)
+      {:error, reason} ->
+        params = Selectrix.Message.error_params(reason, env)
+        raise CompileError, params
+    end)
+  end
 end

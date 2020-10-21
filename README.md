@@ -6,7 +6,8 @@ A Static Typechecker for Elixir
 
 Currently this software is vaporware, at the moment this repo is only the
 outermost shell and performs no actual typechecking.  Considerable
-work will be going into [mavis](https://github.com/ityonemo/mavis) before
+work will be going into [mavis](https://github.com/ityonemo/mavis) and 
+[mavis_inference](https://github.com/ityonemo/mavis) before
 further work happens here.
 
 ## Funding
@@ -19,6 +20,10 @@ the simplest thing I could do.  Accordingly, the sponsorships will
 be terminated before the end of November.  If you'd prefer a different
 way of leaving me a tip, message me on elixirforums (my gh handle) or
 the Elixir Slack (my gh handle).
+
+## Updates
+
+check the issues list for updates
 
 ## Features
 
